@@ -11,4 +11,9 @@ Register a okta account
 setup a default scope
 
 a Login Redirect of http://localhost:8080/login/oauth2/code/okta 
-and a Logout Redirect of http://localhost:8080
+and a Logout Redirect of http://localhost:8080, 
+
+# Authrization flow
+![alt text](https://developer.okta.com/img/oauth_auth_code_flow.png)
+
+(reference from: https://developer.okta.com/docs/concepts/oauth-openid/#authorization-code-flow)
