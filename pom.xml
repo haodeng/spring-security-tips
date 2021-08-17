@@ -21,8 +21,9 @@
 
     <modules>
         <module>form-based-basic-auth</module>
-        <module>open-id-connect-auth</module>
+        <module>open-id-connect-authentication-oauth2-authorization</module>
         <module>okta-oauth2-resource-server</module>
+        <module>basic-auth-h2</module>
     </modules>
     <dependencies>
         <dependency>
