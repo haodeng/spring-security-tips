@@ -1,5 +1,6 @@
 package demo.hao;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminDemoController {
 
     @GetMapping
-    public String hi() {
-        return "Hi, admin";
+    public String hi(Authentication auth) {
+        return "Hi, " + auth;
     }
 }
