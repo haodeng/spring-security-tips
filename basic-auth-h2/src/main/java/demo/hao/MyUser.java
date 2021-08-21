@@ -19,7 +19,7 @@ public class MyUser {
 
     protected MyUser() {}
 
-    public MyUser(String name, String password, List<String> roles) { // <3>
+    public MyUser(String name, String password, List<String> roles) {
         this.name = name;
         this.password = password;
         this.roles = roles;

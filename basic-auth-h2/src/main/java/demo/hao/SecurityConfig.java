@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,14 +30,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     static final String USER = "USER";
     static final String ADMIN = "ADMIN";
 
+    static final SimpleGrantedAuthority ROLE_ADMIN =
+            new SimpleGrantedAuthority("ROLE_" + SecurityConfig.ADMIN);
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .mvcMatchers("/admin").hasRole(ADMIN)
-                .mvcMatchers(HttpMethod.DELETE, "/**").hasRole(ADMIN)
-                .anyRequest().authenticated()
-                .and()
+
+        // config using mvcMatchers
+//        http.
+//                authorizeRequests()
+//                .mvcMatchers("/admin").hasRole(ADMIN)
+//                .mvcMatchers(HttpMethod.DELETE, "/**").hasRole(ADMIN)
+//                .anyRequest().authenticated()
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .csrf().disable();
+
+        // config use method level authorize
+        http.
+                authorizeRequests(registry -> registry.anyRequest().authenticated())
                 .httpBasic()
                 .and()
                 .formLogin()
